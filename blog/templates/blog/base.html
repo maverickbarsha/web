@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Blogs</title>
+  </head>
+  <body></body>
+
+
+
+  <div class="row">
+        <div class="col">
+            <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+          <a class="nav-link" href="">Home</a>
+      </li>
+        <li>
+          <a class="nav-link" href="auth/">About Authors</a>
+        </li>
+    <li>
+
+        <a class="nav-link" href="contact/">Contact</a>
+      </li>
+        <li>
+            <nav class="navbar-fixed-top-l" >
+
+ <form class="form-inline my-2 my-lg-0 mr-4" action="{% url 'blog:search' %}">
+                <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+</nav>
+        </li>
+
+
+
+
+    </ul>
+  </div>
+</nav>
+    </div>
+        </div>
+        </div>
+        </div>
+
+  {% block content %}
+        {% for p in article %}
+            <div class="card mt-4 {% if forloop.last %}mb-4{% endif %}">
+                <div class="row">
+                    <div class="col-4">
+                        <a href="{% url 'blog:detail' p.slug %}"><img src="/https://blog.schoolspecialty.com/wp-content/uploads/2015/11/main11-1200x624.jpg/{{ p.image }}" class="img-fluid" alt="{{ p.title }}" ></a>
+                    <div class="col">
+                        <div class="card-block mt-4">
+                            <h4 class="card-title"><a href="{% url 'blog:detail' p.slug %}">{{ p.title }}</a></h4>
+                            <h5 class="card-text">{{ p.description }}</h5>
+
+                    </div>
+
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+                        {% endfor %}
+
+{% endblock %}
+
+
+
+
+
+
+
+    <!-- JavaScripts -->
+    <script src="/static/shop/js/bootstrap.min.js"></script>
+    <script src="/static/shop/js/bootstrap.bundle.min.js"></script>
+    {% block jscode %}{% endblock %}
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
